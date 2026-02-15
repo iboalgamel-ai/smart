@@ -53,17 +53,19 @@
     }
 
     /* 5. زر الحفظ */
-    .btn-save {
-        margin: 20px;
-        padding: 15px 30px; 
-        background: #28a745; 
-        color: white; 
-        border: none; 
-        border-radius: 8px; 
-        font-weight: bold; 
-        font-size: 18px;
-        cursor: pointer;
-    }
+.btn-save {
+    display: block;      /* لجعله عنصراً مستقلاً */
+    margin: 20px auto;   /* auto من اليمين واليسار تضعه في المنتصف تماماً */
+    padding: 15px 30px; 
+    background: #28a745; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-size: 18px;
+    cursor: pointer;
+    width: fit-content;  /* لكي يكون حجمه على قدر الكلام المكتوب بداخله */
+}
 </style>
 </head>
 <body>
@@ -79,7 +81,7 @@
             <tr>
                 <td rowspan="2" class="bg-gray" style="width: 30%;">VARDİYA 08:00 - 16:00</td>
                 <td style="width: 20%;">TARİH:</td>
-                <td><input type="text" value="15.02.26"></td>
+                <td><input type="text" class="tarih"></td>
             </tr>
             <tr>
                 <td>OPERATÖR:</td>
@@ -159,7 +161,7 @@
             <tr>
                 <td rowspan="2" class="bg-gray" style="width: 30%;">VARDİYA 16:00 - 24:00</td>
                 <td style="width: 20%;">TARİH:</td>
-                <td><input type="text" value="15.02.26"></td>
+                <td><input type="text" class="tarih"></td>
             </tr>
             <tr>
                 <td>OPERATÖR:</td>
@@ -240,7 +242,7 @@
             <tr>
                 <td rowspan="2" class="bg-gray" style="width: 30%;">VARDİYA 24:00 - 08:00</td>
                 <td style="width: 20%;">TARİH:</td>
-                <td><input type="text" value="15.02.26"></td>
+                <td><input type="text" class="tarih"></td>
             </tr>
             <tr>
                 <td>OPERATÖR:</td>
@@ -349,6 +351,18 @@
     <button class="btn-save" onclick="generateProductionImage()">توليد صورة الورقة الآن</button>
 
     <script>
+
+      
+    // بمجرد فتح الصفحة، ابحث عن كلمة "tarih" وضع فيها تاريخ اليوم
+    window.onload = function() {
+        let bugun = new Date().toLocaleDateString('tr-TR'); // تاريخ تركيا اليوم
+        let inputs = document.querySelectorAll('.tarih'); // البحث عن الكلمة
+        
+        inputs.forEach(input => {
+            input.value = bugun; // كتابة التاريخ تلقائياً
+        });
+    }
+
         function generateProductionImage() {
             // تصوير منطقة capture-area فقط
             html2canvas(document.querySelector("#capture-area")).then(canvas => {
