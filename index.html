@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ÖZGÜ BÖLÜMÜ TAKİP FORMU</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -13,9 +14,12 @@
         #capture-area { 
             background: white; 
             padding: 30px; 
-            width: 850px; 
+            width: 95%; 
+            max-width: 850px;
+            margin: 0;
             border: 1px solid #000; 
             box-sizing: border-box;
+            overflow-x: auto;
         }
 
         .title { text-align: center; font-weight: bold; font-size: 22px; margin-bottom: 10px; }
@@ -25,7 +29,7 @@
             border-bottom: 1px solid #000; width: fit-content; margin: 0 auto 15px auto; padding: 0 40px; 
         }
 
-        table { width: 100%; border-collapse: collapse; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px;}
         td { border: 1px solid #000; height: 30px; padding: 0 5px; font-size: 14px; }
         
         .bg-gray { background: #f2f2f2; font-weight: bold; text-align: center; }
@@ -34,10 +38,12 @@
         input { 
             width: 95%; border: none; outline: none; 
             color: blue; font-weight: bold; font-family: 'Courier New', Courier, monospace;
-            font-size: 16px; background: transparent;
+            font-size: 16px; !important background: transparent;
         }
 
         .center-input { text-align: center; }
+
+        .input-section {grid-template-columns: 1fr;}
 
         /* الزر الأخضر للحفظ */
         .btn-save {
